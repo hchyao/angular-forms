@@ -10,17 +10,22 @@ import {Hero}    from './hero';
 export class HeroFormComponent {
     powers = ['Really Smart', 'Super Flexible','Super Hot', 'Weather Changer'];
     model = new Hero(18, 'Dr IQ', this.powers[0], 'Chuck Overstreet');
-
+    active = true;
     submitted = false;
 
     onSubmit() {
         this.submitted = true;
     }
 
-    click
     // 增加一个 diagnostic 属性，它返回这个模型的 JSON 形式。 它会帮我们看清开发过程中发生的事，等最后做清理时我们会丢弃它。
     // TODO: Remove this when we're done
     get diagnostic() {
         return JSON.stringify(this.model);
+    }
+
+    newHero() {
+        this.model = new Hero(42, '', '');
+        this.active = false;
+        setTimeout(() => this.active = true, 0);
     }
 }
